@@ -14,6 +14,16 @@ export const getThing = (req: Request, res: Response) => {
   const thingAyKnow = thingsThatAyKnow.find(
     (thing) => thing.idThing === +idThing
   );
-  res.status(200).json(thingAyKnow);
+  res.status(200).json({ thingAyKnow });
   createDebug(chalk.bgBlue(`Aquí tens la cosa número ${idThing}`));
+};
+
+export const deleteThing = (req: Request, res: Response) => {
+  const { idThing } = req.params;
+  const position = thingsThatAyKnow.findIndex(
+    (thing) => thing.idThing === +idThing
+  );
+  const thingToDelete = thingsThatAyKnow.splice(position, 1); // Deletes severaltimes
+  res.status(200).json({ thingToDelete });
+  createDebug(chalk.bgBlue("Ja no hi é"));
 };
