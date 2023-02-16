@@ -1,4 +1,4 @@
-export interface Things {
-  id: number;
+export interface Thing {
+  idThing: number;
   name: string;
 }
